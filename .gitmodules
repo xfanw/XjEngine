@@ -1,0 +1,3 @@
+[submodule "Xj/vender/spdlog"]
+	path = Xj/vender/spdlog
+	url = https://github.com/gabime/spdlog

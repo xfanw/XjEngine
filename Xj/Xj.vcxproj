@@ -15,8 +15,10 @@
     <ClInclude Include="src\Xj\Core.h" />
     <ClInclude Include="src\Xj.h" />
     <ClInclude Include="src\Xj\EntryPoint.h" />
+    <ClInclude Include="src\Xj\Log.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Xj\Log.cpp" />
     <ClCompile Include="src\Xj\Application.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -67,6 +69,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>XJ_BUILD_DLL; XJ_PLATFORM_WINDOWS; _WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Xj\vender\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -81,6 +84,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>XJ_BUILD_DLL; XJ_PLATFORM_WINDOWS; _WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Xj\vender\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

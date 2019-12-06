@@ -1,5 +1,9 @@
-//Frank (4) Test
-//Frank (5) Remove Test
+// Frank (4) Test
+// Frank (5) Remove Test, add Core and Entry
+
+// Frank (6) Logging include sdplog use macro function defination
+// Frank (7) PreMake
+
 
 #include "Xj.h"
 
