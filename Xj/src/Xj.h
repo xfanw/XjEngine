@@ -1,8 +1,8 @@
 #pragma once
 // For use by Xj applications
-#include "Xj/Application.h"
-#include "Xj/Log.h"
+#include "Core/Application.h"
+#include "Core/Log.h"
 
 
 // Entry Point
-#include "Xj/EntryPoint.h"
+#include "Core/EntryPoint.h"

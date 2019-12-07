@@ -23,6 +23,7 @@ project "Xj"
 		}
 
 		includedirs{
+			"%{prj.name}/src",
 			"%{prj.name}/vender/spdlog/include" 
 		}
 
@@ -31,7 +32,7 @@ project "Xj"
 		filter "system:windows"
 			cppdialect "C++17"
 			staticruntime "On"
-			systemversion "10.0.18362.0"
+			systemversion "latest"
 
 			defines{
 				"XJ_PLATFORM_WINDOWS",

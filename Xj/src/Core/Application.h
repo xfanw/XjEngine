@@ -1,7 +1,9 @@
 #pragma once
 
 
-#include "Core.h"
+#include "Core/Core.h"
+#include "Events/ApplicationEvent.h"
+#include "Core/Log.h"
 namespace Xj {
 	class  XJ_API  Application
 	{
