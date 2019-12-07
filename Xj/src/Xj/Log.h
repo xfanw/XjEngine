@@ -1,5 +1,3 @@
-// Frank (6)
-
 #pragma once
 
 #include <memory>
