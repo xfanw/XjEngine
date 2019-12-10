@@ -8,7 +8,7 @@ extern Xj::Application* Xj::CreateApplication();
 
 		XJ_CORE_WARN("Initialized Log!");
 		int a = 5;
-		XJ_CLIENT_INFO("Hello! Var = {0}", a);
+		XJ_INFO("Hello! Var = {0}", a);
 
 
 		//printf("Hello!");

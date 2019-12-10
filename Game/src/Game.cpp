@@ -1,5 +1,5 @@
-// 10 precompile headers
-
+// Frank (10) precompile headers
+// Frank (11) Create Window
 
 #include "Xj.h"
 #include <Core\Application.h>

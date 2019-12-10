@@ -8,7 +8,11 @@ workspace "Xj"
 	}
 	
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-
+-- Include direcrories relative to root folder (solution directory)
+	IncludeDir  = {}
+	IncludeDir["GLFW"] = "Xj/vender/GLFW/include"
+	
+	include "Xj/vender/GLFW"
 project "Xj"
 		location "Xj"
 		kind "SharedLib"
@@ -27,9 +31,14 @@ project "Xj"
 
 		includedirs{
 			"%{prj.name}/src",
-			"%{prj.name}/vender/spdlog/include" 
+			"%{prj.name}/vender/spdlog/include" ,
+			"%{IncludeDir.GLFW}"
 		}
-
+		
+		links{
+			"GLFW",
+			"opengl32.lib"
+		}
 
 
 		filter "system:windows"
@@ -49,6 +58,7 @@ project "Xj"
 
 		filter "configurations:Debug"
 			defines "XJ_DEBUG"
+			defines "XJ_ENABLE_ASSERT"
 			symbols "On"
 
 		filter "configurations:Release"
