@@ -1,6 +1,6 @@
 [submodule "Xj/vender/spdlog"]
 	path = Xj/vender/spdlog
 	url = https://github.com/gabime/spdlog
-[submodule "glfw"]
+[submodule "Xj/vender/glfw"]
 	path = Xj/vender/glfw
 	url = https://github.com/TheCherno/glfw
