@@ -15,8 +15,15 @@ namespace Xj {
 		virtual ~Application();
 
 		void Run();
+		// Frank (12)
+		void OnEvent(Event& e);
+		// Frank (12)
+	private:
+		bool OnWindowClosed(WindowCloseEvent & e);
 	//Frank (11)
 	private:
+		
+
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 	};
