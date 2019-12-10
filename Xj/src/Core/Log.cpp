@@ -1,5 +1,8 @@
+// Frank (10) Precompiled headers should be first in the line
+#include "xjpch.h"
 #include "Log.h"
 #include "spdlog//sinks//stdout_color_sinks.h"
+
 
 namespace Xj {
 	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;

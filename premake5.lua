@@ -17,6 +17,9 @@ project "Xj"
 		targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 		objdir("bin-int/" .. outputdir .. "/%{prj.name}")
 
+		pchheader "xjpch.h"
+		pchsource "Xj/src/xjpch.cpp"
+
 		files{
 			"%{prj.name}/src/**.h",
 			"%{prj.name}/src/**.cpp"
@@ -80,7 +83,7 @@ project "Game"
 		filter "system:windows"
 			cppdialect "C++17"
 			staticruntime "On"
-			systemversion "10.0.18362.0"
+			systemversion "latest"
 
 			defines{
 				"XJ_PLATFORM_WINDOWS"					

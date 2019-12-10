@@ -11,7 +11,7 @@ extern Xj::Application* Xj::CreateApplication();
 		XJ_CLIENT_INFO("Hello! Var = {0}", a);
 
 
-		printf("Hello!");
+		//printf("Hello!");
 		auto app = Xj::CreateApplication();
 		app->Run();
 		delete app;

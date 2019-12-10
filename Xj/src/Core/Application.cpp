@@ -1,4 +1,6 @@
+#include "xjpch.h"
 #include "Application.h"
+
 
 namespace Xj {
 	Application::Application()
