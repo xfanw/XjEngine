@@ -13,10 +13,13 @@ workspace "Xj"
 	IncludeDir  = {}
 	IncludeDir["GLFW"] = "Xj/vender/glfw/include"
 	IncludeDir["GLAD"] = "Xj/vender/glad/include"
-
+	IncludeDir["ImGui"] = "Xj/vender/imgui"
 
 	include "Xj/vender/glfw"
 	include "Xj/vender/glad"
+	include "Xj/vender/imgui"
+
+
 project "Xj"
 		location "Xj"
 		kind "SharedLib"
@@ -37,12 +40,14 @@ project "Xj"
 			"%{prj.name}/src",
 			"%{prj.name}/vender/spdlog/include" ,
 			"%{IncludeDir.GLFW}",
-			"%{IncludeDir.GLAD}"
+			"%{IncludeDir.GLAD}",
+			"%{IncludeDir.ImGui}"
 		}
 		
 		links{
 			"GLFW",
 			"GLAD",
+			"ImGui",
 			"opengl32.lib"
 		}
 
@@ -93,6 +98,7 @@ project "Game"
 
 		includedirs{
 			"Xj/vender/spdlog/include",
+			"Xj/vender/imgui",
 			"Xj/src"
 		}
 

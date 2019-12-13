@@ -23,15 +23,16 @@ namespace Xj {
 		void PushOverlay(Layer* layer);
 
 
-
-
-
+		// Frank (15) 
+		inline Window& GetWindow() { return *m_Window; }
+		inline static Application& Get() { return *s_Instance; }
 		// Frank (12)
 	private:
 		bool OnWindowClosed(WindowCloseEvent & e);
 	//Frank (11)
 	private:
-		
+		//Frank (15) add singleton
+		static Application* s_Instance;
 
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;

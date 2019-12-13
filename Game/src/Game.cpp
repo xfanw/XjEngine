@@ -3,6 +3,7 @@
 // Frank (12) Key and Mouse Events
 // Farnk (13) Layers
 // Frank (14) Glad, premake
+// Frank (15) ImGui
 
 #include "Xj.h"
 #include <Core\Application.h>
@@ -27,6 +28,7 @@ public:
 	Game() {
 		//Frank (13)
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Xj::ImGuiLayer());
 	}
 	~Game(){}
 	
