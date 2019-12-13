@@ -6,7 +6,7 @@
 #include "Events/KeyEvent.h"
 
 
-// Frank (11)
+
 namespace Xj {
 	static bool s_GLFWInitialized = false;
 	static void GLFWErrorCallback(int error, const char* description) {
@@ -40,6 +40,10 @@ namespace Xj {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+
+		// Frank (14) glad
+ 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		XJ_CORE_ASSERT(status, "Failed to initialize Glad!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

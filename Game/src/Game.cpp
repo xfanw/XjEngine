@@ -2,6 +2,7 @@
 // Frank (11) Create Window
 // Frank (12) Key and Mouse Events
 // Farnk (13) Layers
+// Frank (14) Glad, premake
 
 #include "Xj.h"
 #include <Core\Application.h>

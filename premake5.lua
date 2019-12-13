@@ -10,9 +10,12 @@ workspace "Xj"
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include direcrories relative to root folder (solution directory)
 	IncludeDir  = {}
-	IncludeDir["GLFW"] = "Xj/vender/GLFW/include"
-	
-	include "Xj/vender/GLFW"
+	IncludeDir["GLFW"] = "Xj/vender/glfw/include"
+	IncludeDir["GLAD"] = "Xj/vender/glad/include"
+
+
+	include "Xj/vender/glfw"
+	include "Xj/vender/glad"
 project "Xj"
 		location "Xj"
 		kind "SharedLib"
@@ -32,11 +35,13 @@ project "Xj"
 		includedirs{
 			"%{prj.name}/src",
 			"%{prj.name}/vender/spdlog/include" ,
-			"%{IncludeDir.GLFW}"
+			"%{IncludeDir.GLFW}",
+			"%{IncludeDir.GLAD}"
 		}
 		
 		links{
 			"GLFW",
+			"GLAD",
 			"opengl32.lib"
 		}
 
@@ -48,7 +53,7 @@ project "Xj"
 
 			defines{
 				"XJ_PLATFORM_WINDOWS",
-				"XJ_BUILD_DLL"							
+				"XJ_BUILD_DLL",				
 			}
 
 
