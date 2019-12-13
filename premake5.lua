@@ -59,14 +59,17 @@ project "Xj"
 		filter "configurations:Debug"
 			defines "XJ_DEBUG"
 			defines "XJ_ENABLE_ASSERT"
+			buildoptions "/MDd"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "XJ_RELEASE"
+			buildoptions "/MD"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "XJ_DIST"
+			buildoptions "/MD"
 			optimize "On"
 
 project "Game"
@@ -101,12 +104,15 @@ project "Game"
 
 		filter "configurations:Debug"
 			defines "XJ_DEBUG"
+			buildoptions "/MDd"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "XJ_RELEASE"
+			buildoptions "/MD"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "XJ_DIST"
+			buildoptions "/MD"
 			optimize "On"

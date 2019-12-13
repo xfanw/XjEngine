@@ -6,9 +6,27 @@
 #include "Xj.h"
 #include <Core\Application.h>
 
+// Frank(13) Example
+class ExampleLayer : public Xj::Layer {
+public:
+	ExampleLayer() :Layer("Example") {}
+
+	void OnUpdate() override {
+		XJ_INFO("ExampleLayer::Update");
+	}
+	void OnEvent(Xj::Event& event) override {
+		XJ_FATAL("{0}", event);
+	}
+
+};
+
+
 class Game : public Xj::Application {
 public:
-	Game() {}
+	Game() {
+		//Frank (13)
+		PushLayer(new ExampleLayer());
+	}
 	~Game(){}
 	
 };
