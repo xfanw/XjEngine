@@ -4,3 +4,6 @@
 [submodule "Xj/vender/glfw"]
 	path = Xj/vender/glfw
 	url = https://github.com/TheCherno/glfw
+[submodule "Xj/vender/imgui"]
+	path = Xj/vender/imgui
+	url = http://github.com/TheCherno/imgui
