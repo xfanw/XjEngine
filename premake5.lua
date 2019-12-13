@@ -6,7 +6,8 @@ workspace "Xj"
 		"Release",
 		"Dist"
 	}
-	
+	startproject  "Game"
+
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include direcrories relative to root folder (solution directory)
 	IncludeDir  = {}
