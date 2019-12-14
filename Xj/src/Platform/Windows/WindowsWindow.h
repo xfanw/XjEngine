@@ -1,9 +1,7 @@
 #pragma once
-// Frank (11)
-// #include <GLFW/glfw3.h>
+
 #include <Core/Window.h>
 
-//Frank (14) -- ALWAYS include glad before GLFW
 #include "glad/glad.h"
 #include <GLFW/glfw3.h>
 

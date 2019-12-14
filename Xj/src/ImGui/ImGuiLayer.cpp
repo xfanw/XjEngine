@@ -1,10 +1,8 @@
 #include "xjpch.h"
 #include "ImGuiLayer.h"
 
-
-// Frank (16)
+// TEMP
 #include <glad/glad.h>
-// Frank (15)
 #include <GLFW/glfw3.h>
 #include "Core/Application.h"
 

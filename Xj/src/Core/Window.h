@@ -1,5 +1,5 @@
 #pragma once
-// Frank (11)
+
 #include "xjpch.h"
 #include "Core/Core.h"
 #include "Events/Event.h"

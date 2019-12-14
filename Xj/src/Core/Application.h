@@ -15,29 +15,23 @@ namespace Xj {
 		virtual ~Application();
 
 		void Run();
-		// Frank (12)
 		void OnEvent(Event& e);
 
-		// Frank (13) 
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
-
-		// Frank (15) 
 		inline Window& GetWindow() { return *m_Window; }
 		inline static Application& Get() { return *s_Instance; }
-		// Frank (12)
+
 	private:
 		bool OnWindowClosed(WindowCloseEvent & e);
-	//Frank (11)
+
 	private:
-		//Frank (15) add singleton
+		// Fake Singleton
 		static Application* s_Instance;
 
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
-
-		// Frank (13)
 		LayerStack m_LayerStack;
 	};
 

@@ -1,6 +1,7 @@
 #include "xjpch.h"
 #include "WindowsWindow.h"
-//Frank (12)
+
+
 #include "Events/ApplicationEvent.h"
 #include "Events/MouseEvent.h"
 #include "Events/KeyEvent.h"
@@ -41,14 +42,13 @@ namespace Xj {
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
 
-		// Frank (14) glad
+		// GLAD
  		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		XJ_CORE_ASSERT(status, "Failed to initialize Glad!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
 		// Set GLFW callbacks
-		// Frank (12)
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 

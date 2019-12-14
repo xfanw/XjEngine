@@ -1,4 +1,4 @@
-// Frank (10) Precompiled headers should be first in the line
+// Precompiled headers
 #include "xjpch.h"
 #include "Log.h"
 #include "spdlog//sinks//stdout_color_sinks.h"

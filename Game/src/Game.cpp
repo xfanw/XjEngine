@@ -1,15 +1,10 @@
-// Frank (10) precompile headers
-// Frank (11) Create Window
-// Frank (12) Key and Mouse Events
-// Farnk (13) Layers
-// Frank (14) Glad, premake
-// Frank (15) ImGui
-// Frank (16) ImGui Event
-
+// Frank (17) GitHub
+// Frank (18) GitHub pull request
+// Frank (19) Input Polling
 #include "Xj.h"
 #include <Core\Application.h>
 
-// Frank (13) Example
+// TEMP
 class ExampleLayer : public Xj::Layer {
 public:
 	ExampleLayer() :Layer("Example") {}
@@ -27,7 +22,6 @@ public:
 class Game : public Xj::Application {
 public:
 	Game() {
-		//Frank (13)
 		PushLayer(new ExampleLayer());
 		PushOverlay(new Xj::ImGuiLayer());
 	}

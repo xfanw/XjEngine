@@ -1,5 +1,5 @@
 #pragma once
-// Frank (15)
+
 #include "Layer/Layer.h"
 #include "Platform/OpenGL/ImGuiOpenGLRender.h"
 #include "Events/KeyEvent.h"

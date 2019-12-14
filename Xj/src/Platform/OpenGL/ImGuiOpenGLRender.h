@@ -22,7 +22,7 @@
 #pragma once
 
 // Set default OpenGL loader to be gl3w
-// Frank (15)
+
 
 #include "imgui.h"
 

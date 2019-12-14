@@ -54,7 +54,7 @@ project "Xj"
 
 		filter "system:windows"
 			cppdialect "C++17"
-			staticruntime "On"
+			staticruntime "off"
 			systemversion "latest"
 
 			defines{
@@ -64,23 +64,23 @@ project "Xj"
 
 
 			postbuildcommands{
-				("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Game")
+				("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Game/\"")
 			}
 
 		filter "configurations:Debug"
 			defines "XJ_DEBUG"
 			defines "XJ_ENABLE_ASSERT"
-			buildoptions "/MDd"
+
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "XJ_RELEASE"
-			buildoptions "/MD"
+
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "XJ_DIST"
-			buildoptions "/MD"
+
 			optimize "On"
 
 project "Game"
@@ -107,7 +107,7 @@ project "Game"
 		}
 		filter "system:windows"
 			cppdialect "C++17"
-			staticruntime "On"
+			staticruntime "off"
 			systemversion "latest"
 
 			defines{
@@ -116,15 +116,15 @@ project "Game"
 
 		filter "configurations:Debug"
 			defines "XJ_DEBUG"
-			buildoptions "/MDd"
+
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "XJ_RELEASE"
-			buildoptions "/MD"
+
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "XJ_DIST"
-			buildoptions "/MD"
+
 			optimize "On"

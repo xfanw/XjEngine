@@ -29,7 +29,7 @@ for /d %%D in (*) do (
 	rmdir /S /Q %%~D\Release
 	rmdir /S /Q %%~D\x64
 )
-pause
+REM pause
 
 cd Xj/vender
 for /d %%D in (*) do (
@@ -39,4 +39,4 @@ for /d %%D in (*) do (
     rmdir /S /Q %%~D\bin
     rmdir /S /Q %%~D\bin-int
 )
-pause
+REM pause

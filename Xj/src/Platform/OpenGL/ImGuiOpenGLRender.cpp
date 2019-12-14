@@ -53,7 +53,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
-// Frank (15)
+
 #include "xjpch.h"
 #include "ImGuiOpenGLRender.h"
 #include "glad/glad.h"

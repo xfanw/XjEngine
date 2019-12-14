@@ -1,6 +1,5 @@
 #pragma once
 
-// Frank (10)
 #include <iostream>
 #include <memory>
 #include <sstream>

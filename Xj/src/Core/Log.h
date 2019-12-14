@@ -20,7 +20,7 @@ namespace Xj {
 	};
 }
 
-//Frank (6.5) 
+
 
 //Core Log Macros
 #define XJ_CORE_TRACE(...)	::Xj::Log::GetCoreLogger()->trace(__VA_ARGS__)
@@ -28,7 +28,7 @@ namespace Xj {
 #define XJ_CORE_WARN(...)	::Xj::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define XJ_CORE_ERROR(...)	::Xj::Log::GetCoreLogger()->error(__VA_ARGS__)
 #define XJ_CORE_FATAL(...)	::Xj::Log::GetCoreLogger()->critical(__VA_ARGS__)
-//#define XJ_CORE_ASSERT(...)	::Xj::Log::GetCoreLogger()->assert(__VA_ARGS__)
+
 
 //Client Log Macros
 #define XJ_TRACE(...)	::Xj::Log::GetClientLogger()->trace(__VA_ARGS__)
@@ -36,4 +36,4 @@ namespace Xj {
 #define XJ_WARN(...)	::Xj::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define XJ_ERROR(...)	::Xj::Log::GetClientLogger()->error(__VA_ARGS__)
 #define XJ_FATAL(...)	::Xj::Log::GetClientLogger()->critical(__VA_ARGS__) 
-//#define XJ_ASSERT(...)	::Xj::Log::GetClientLogger()->assert(__VA_ARGS__)
+
