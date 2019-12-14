@@ -6,6 +6,9 @@
 #include "Core/Log.h"
 #include "Window.h"
 #include "Layer/LayerStack.h"
+#include "Core/Input.h"
+
+
 
 namespace Xj {
 	class  XJ_API  Application

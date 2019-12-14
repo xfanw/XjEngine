@@ -68,6 +68,12 @@
     </ClInclude>
     <ClInclude Include="src\Xj.h" />
     <ClInclude Include="src\xjpch.h" />
+    <ClInclude Include="src\Core\Input.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
@@ -92,5 +98,8 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\xjpch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
