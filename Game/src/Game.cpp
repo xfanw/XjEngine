@@ -4,11 +4,12 @@
 // Farnk (13) Layers
 // Frank (14) Glad, premake
 // Frank (15) ImGui
+// Frank (16) ImGui Event
 
 #include "Xj.h"
 #include <Core\Application.h>
 
-// Frank(13) Example
+// Frank (13) Example
 class ExampleLayer : public Xj::Layer {
 public:
 	ExampleLayer() :Layer("Example") {}

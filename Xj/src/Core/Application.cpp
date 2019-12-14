@@ -66,7 +66,7 @@ namespace Xj {
 			glClearColor(1, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			//Frank(13)
+			//Frank (13)
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
 			}

@@ -30,3 +30,13 @@ for /d %%D in (*) do (
 	rmdir /S /Q %%~D\x64
 )
 pause
+
+cd Xj/vender
+for /d %%D in (*) do (
+	echo %%~fD
+	del /F %%~D\*.vcxproj*
+
+    rmdir /S /Q %%~D\bin
+    rmdir /S /Q %%~D\bin-int
+)
+pause

@@ -28,4 +28,7 @@
 	#define XJ_CORE_ASSERT(x, ...)
 #endif
 
+// Frank (16)
+#define XJ_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
 #define BIT(x) (1 << x)
