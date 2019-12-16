@@ -25,7 +25,7 @@ namespace Xj {
 	void Application::OnEvent(Event& e) {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClosed));
-		XJ_CORE_TRACE("{0}", e);
+		//XJ_CORE_TRACE("{0}", e);
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();) {
 			(*--it)->OnEvent(e);
@@ -61,8 +61,12 @@ namespace Xj {
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
 			}
-			auto [x, y] = Input::GetMousePosition();
-			XJ_CORE_TRACE("{0},{1}", x, y);
+			// Frank (20) --
+			//auto [x, y] = Input::GetMousePosition();
+			//XJ_CORE_TRACE("{0},{1}", x, y);
+
+			
+
 			m_Window->OnUpdate();
 		}
 	}

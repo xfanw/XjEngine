@@ -1,7 +1,7 @@
 // Frank (17) GitHub
 // Frank (18) GitHub pull request
 // Frank (19) Input Polling
-// Frank (20) MouseButtonCode
+// Frank (20) Key and Mouse Code
 
 
 #include "Xj.h"
@@ -13,10 +13,19 @@ public:
 	ExampleLayer() :Layer("Example") {}
 
 	void OnUpdate() override {
-		XJ_INFO("ExampleLayer::Update");
+		if (Xj::Input::IsKeyPressed(XJ_KEY_TAB))
+				XJ_INFO("Tab Key is pressed (poll)");
 	}
 	void OnEvent(Xj::Event& event) override {
-		XJ_FATAL("{0}", event);
+		//XJ_FATAL("{0}", event);
+		if (event.GetEventType() == Xj::EventType::KeyPressed) {
+			Xj::KeyPressedEvent& e = (Xj::KeyPressedEvent&) event;
+			XJ_INFO("{0}", (char)e.GetKeyCode());
+
+			//TEST
+			if (Xj::Input::IsKeyPressed(XJ_KEY_TAB))
+				XJ_INFO("Tab Key is pressed (event)");
+		}
 	}
 
 };
