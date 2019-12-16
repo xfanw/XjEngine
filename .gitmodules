@@ -7,3 +7,6 @@
 [submodule "Xj/vender/imgui"]
 	path = Xj/vender/imgui
 	url = http://github.com/TheCherno/imgui
+[submodule "Xj/vender/glm"]
+	path = Xj/vender/glm
+	url = https://github.com/g-truc/glm
