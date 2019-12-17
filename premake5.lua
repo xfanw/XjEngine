@@ -14,11 +14,13 @@ workspace "Xj"
 	IncludeDir["GLFW"] = "Xj/vender/glfw/include"
 	IncludeDir["GLAD"] = "Xj/vender/glad/include"
 	IncludeDir["ImGui"] = "Xj/vender/imgui"
-
+	--IncludeDir["GLM"] = "Xj/vender/glm"
+group "Dependencies"
 	include "Xj/vender/glfw"
 	include "Xj/vender/glad"
 	include "Xj/vender/imgui"
-
+	--include "Xj/vender/glm"
+group ""
 
 project "Xj"
 		location "Xj"
@@ -33,21 +35,30 @@ project "Xj"
 
 		files{
 			"%{prj.name}/src/**.h",
-			"%{prj.name}/src/**.cpp"
+			"%{prj.name}/src/**.cpp",
+			-- ++
+			"%{prj.name}/vender/glm/glm/**.hpp",
+			"%{prj.name}/vender/glm/glm/**.inl",
+			
+			-- "%{prj.name}/vender/imgui/examples/**.h" ,
+			-- "%{prj.name}/vender/imgui/examples/**.cpp" 
 		}
 
 		includedirs{
 			"%{prj.name}/src",
 			"%{prj.name}/vender/spdlog/include" ,
+			--"%{prj.name}/vender/imgui/examples" ,
 			"%{IncludeDir.GLFW}",
 			"%{IncludeDir.GLAD}",
-			"%{IncludeDir.ImGui}"
+			"%{IncludeDir.ImGui}",
+			--"%{IncludeDir.GLM}"
 		}
 		
 		links{
 			"GLFW",
 			"GLAD",
 			"ImGui",
+			--"GLM",
 			"opengl32.lib"
 		}
 
@@ -99,11 +110,13 @@ project "Game"
 		includedirs{
 			"Xj/vender/spdlog/include",
 			"Xj/vender/imgui",
+			"Xj/vender/glm",
 			"Xj/src"
 		}
 
 		links{
-			"Xj"
+			"Xj",
+			"ImGui"
 		}
 		filter "system:windows"
 			cppdialect "C++17"

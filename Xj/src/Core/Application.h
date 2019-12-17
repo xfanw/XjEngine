@@ -8,8 +8,8 @@
 #include "Layer/LayerStack.h"
 #include "Core/Input.h"
 
-
-
+// Frank (22)
+#include "ImGui/ImGuiLayer.h"
 namespace Xj {
 	class  XJ_API  Application
 	{
@@ -34,6 +34,9 @@ namespace Xj {
 		static Application* s_Instance;
 
 		std::unique_ptr<Window> m_Window;
+		//Frank (22)
+		ImGuiLayer* m_ImGuiLayer;
+
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	};

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Layer/Layer.h"
-#include "Platform/OpenGL/ImGuiOpenGLRender.h"
+
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
 #include "Events/ApplicationEvent.h"
@@ -14,20 +14,29 @@ namespace Xj {
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		void OnUpdate() override;
-		void OnEvent(Event& event) override;
-		void OnAttach() override;
-		void OnDetach() override;
-	private:
-		bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);
-		bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e);
-		bool OnMouseMovedEvent(MouseMovedEvent& e);
-		bool OnMouseScrolledEvent(MouseScrolledEvent& e);
-		
-		bool OnKeyPressedEvent(KeyPressedEvent& e);
-		bool OnKeyReleasedEvent(KeyReleasedEvent& e);
-		bool OnKeyTypedEvent(KeyTypedEvent& e);
-		bool OnWindowResizeEvent(WindowResizeEvent& e);
+			
+		void virtual OnAttach() override;
+		void virtual OnDetach() override;
+		// Frank (22) ++
+		virtual void OnImGuiRender() override;
+
+		void Begin();
+		void End();
+
+
+		// Frank (22) --
+	//	 void virtual OnEvent(Event& event) override;
+	//	 void virtual OnUpdate() override;
+	//private:
+	//	bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);
+	//	bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e);
+	//	bool OnMouseMovedEvent(MouseMovedEvent& e);
+	//	bool OnMouseScrolledEvent(MouseScrolledEvent& e);
+	//	
+	//	bool OnKeyPressedEvent(KeyPressedEvent& e);
+	//	bool OnKeyReleasedEvent(KeyReleasedEvent& e);
+	//	bool OnKeyTypedEvent(KeyTypedEvent& e);
+	//	bool OnWindowResizeEvent(WindowResizeEvent& e);
 
 
 
