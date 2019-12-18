@@ -1,10 +1,14 @@
 #pragma once
 #include <intrin.h>
 #ifdef XJ_PLATFORM_WINDOWS
-	#ifdef XJ_BUILD_DLL
-		#define XJ_API __declspec(dllexport)
+	#ifdef XJ_DYNAMIC_LINK
+		#ifdef XJ_BUILD_DLL
+			#define XJ_API __declspec(dllexport)
+		#else
+			#define XJ_API __declspec(dllimport)
+		#endif
 	#else
-		#define XJ_API __declspec(dllimport)
+		#define XJ_API 
 	#endif
 #else
 	#error Hazel only supports Windows!

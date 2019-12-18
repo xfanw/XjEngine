@@ -4,15 +4,23 @@
 // Frank (20) Key and Mouse Code
 // Frank (21) add glm /premake does not generate .lib
 // Frank (22) git change submodule
-/*
-	go to the subfolder
-	//git status
-	git checkout docking
-	cd ..
-	//git status
-	git add imgui
-	git commit
-*/
+				/*
+					go to the subfolder
+					//git status
+					git checkout docking
+					cd ..
+					//git status
+					git add imgui
+					git commit
+				*/
+
+// Frank (23)(24) Intro to Renderer
+// Frank (25)(26) change to static lib ZERO worning
+
+
+
+
+
 
 #include "Xj.h"
 #include <Core\Application.h>
@@ -56,11 +64,11 @@ public:
 				XJ_INFO("Tab Key is pressed (event)");
 		}
 	}
-	virtual void OnImGuiRender() override {
-		ImGui::Begin("Test");
-		ImGui::Text("Hello World");
-		ImGui::End();
-	}
+	//virtual void OnImGuiRender() override {
+	//	ImGui::Begin("Test");
+	//	ImGui::Text("Hello World");
+	//	ImGui::End();
+	//}
 
 };
 

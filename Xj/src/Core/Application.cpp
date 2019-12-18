@@ -49,7 +49,7 @@ namespace Xj {
 		layer->OnAttach();
 	}
 
-	bool Application::OnWindowClosed(WindowCloseEvent& e)
+	bool Application::OnWindowClosed(WindowCloseEvent& /*e*/)
 	{
 		m_Running = false;
 		return true;
@@ -64,8 +64,8 @@ namespace Xj {
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
 				m_ImGuiLayer->Begin();
-				for (Layer* layer : m_LayerStack)
-					layer->OnImGuiRender();
+				for (Layer* layer_2 : m_LayerStack)
+					layer_2->OnImGuiRender();
 				m_ImGuiLayer->End();
 
 				

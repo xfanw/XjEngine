@@ -35,6 +35,7 @@ namespace Xj {
 			int success = glfwInit();
 
 			XJ_CORE_ASSERT(success, "Could not initialize GLFW!");
+			(void) success;
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
 		}
@@ -45,6 +46,7 @@ namespace Xj {
 		// GLAD
  		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		XJ_CORE_ASSERT(status, "Failed to initialize Glad!");
+		(void)status;
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -67,7 +69,7 @@ namespace Xj {
 			data.EventCallback(event);
 			});
 
-		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int modes) {
+		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int /*scancode*/, int action, int /*modes*/) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
 			switch (action) {
@@ -98,7 +100,7 @@ namespace Xj {
 			data.EventCallback(event);
 
 			});
-		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int modes) {
+		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int /*modes*/) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
 			switch (action) {

@@ -24,9 +24,11 @@ group ""
 
 project "Xj"
 		location "Xj"
-		kind "SharedLib"
+		kind "StaticLib"
 		language "C++"
-
+		cppdialect "C++17"
+		staticruntime "on"
+		
 		targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 		objdir("bin-int/" .. outputdir .. "/%{prj.name}")
 
@@ -62,10 +64,10 @@ project "Xj"
 			"opengl32.lib"
 		}
 
-
+		defines{
+			"_CRT_SECURE_NO_WARNINGS"
+		}
 		filter "system:windows"
-			cppdialect "C++17"
-			staticruntime "off"
 			systemversion "latest"
 
 			defines{
@@ -73,71 +75,71 @@ project "Xj"
 				"XJ_BUILD_DLL",				
 			}
 
-
-			postbuildcommands{
-				("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Game/\"")
-			}
+			-- Frank(26) change to static lib
+			-- postbuildcommands{
+				-- ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Game/\"")
+			-- }
 
 		filter "configurations:Debug"
 			defines "XJ_DEBUG"
 			defines "XJ_ENABLE_ASSERT"
-
-			symbols "On"
+			runtime "Debug"
+			symbols "on"
 
 		filter "configurations:Release"
 			defines "XJ_RELEASE"
-
-			optimize "On"
+			runtime "Release"
+			optimize "on"
 
 		filter "configurations:Dist"
 			defines "XJ_DIST"
-
-			optimize "On"
+			runtime "Release"
+			optimize "on"
 
 project "Game"
 	location "Game"
-		kind "ConsoleApp"
-		language "C++"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+	
+	targetdir ("bin/" ..outputdir .. "/%{prj.name}")
+	objdir("bin-int/" ..outputdir .. "/%{prj.name}")
 
-		targetdir ("bin/" ..outputdir .. "/%{prj.name}")
-		objdir("bin-int/" ..outputdir .. "/%{prj.name}")
+	files{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
 
-		files{
-			"%{prj.name}/src/**.h",
-			"%{prj.name}/src/**.cpp"
+	includedirs{
+		"Xj/vender/spdlog/include",
+		"Xj/vender/imgui",
+		"Xj/vender/glm",
+		"Xj/src"
+	}
+
+	links{
+		"Xj",
+		"ImGui"
+	}
+	filter "system:windows"
+		systemversion "latest"
+
+		defines{
+			"XJ_PLATFORM_WINDOWS"					
 		}
 
-		includedirs{
-			"Xj/vender/spdlog/include",
-			"Xj/vender/imgui",
-			"Xj/vender/glm",
-			"Xj/src"
-		}
+	filter "configurations:Debug"
+		defines "XJ_DEBUG"
+		runtime "Debug"
+		symbols "on"
 
-		links{
-			"Xj",
-			"ImGui"
-		}
-		filter "system:windows"
-			cppdialect "C++17"
-			staticruntime "off"
-			systemversion "latest"
+	filter "configurations:Release"
+		defines "XJ_RELEASE"
+		runtime "Release"
+		optimize "on"
 
-			defines{
-				"XJ_PLATFORM_WINDOWS"					
-			}
-
-		filter "configurations:Debug"
-			defines "XJ_DEBUG"
-
-			symbols "On"
-
-		filter "configurations:Release"
-			defines "XJ_RELEASE"
-
-			optimize "On"
-
-		filter "configurations:Dist"
-			defines "XJ_DIST"
-
-			optimize "On"
+	filter "configurations:Dist"
+		defines "XJ_DIST"
+		runtime "Release"
+		optimize "on"
