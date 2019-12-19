@@ -1218,6 +1218,9 @@
     <ClInclude Include="vender\glm\glm\vector_relational.hpp">
       <Filter>vender\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Renderer\Shader.h">
+      <Filter>src\Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
@@ -1249,6 +1252,9 @@
     </ClCompile>
     <ClCompile Include="src\xjpch.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\Shader.cpp">
+      <Filter>src\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

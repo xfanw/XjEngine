@@ -10,7 +10,8 @@
 #include "Layer/LayerStack.h"
 #include "ImGui/ImGuiLayer.h"
 
-
+// Frank (29)
+#include "Renderer/Shader.h"
 
 
 namespace Xj {
@@ -42,7 +43,10 @@ namespace Xj {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
+		// Frank (28)
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		// Frank (29)
+		std::unique_ptr<Shader> m_Shader;
 	};
 
 	// To be defined in CLIENT
