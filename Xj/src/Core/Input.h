@@ -1,8 +1,6 @@
 #pragma once
 
 
-// Frank (19) 
-
 #include "Core/Core.h"
 namespace Xj {
 

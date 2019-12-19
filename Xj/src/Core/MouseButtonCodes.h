@@ -1,5 +1,4 @@
 #pragma once
-// Frank (20)
 
 //From glfw3.h
 #define XJ_MOUSE_BUTTON_1         0

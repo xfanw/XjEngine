@@ -2,10 +2,6 @@
 
 #include "xjpch.h"
 #include "Core/Core.h"
-// Frank (10) --
-//#include <string>
-//#include <sstream>
-//#include <functional>
 
 
 namespace Xj {

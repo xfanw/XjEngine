@@ -12,8 +12,10 @@ REM cleanup root director
     rmdir /S /Q x64
     rmdir /S /Q ipch
     rmdir /S /Q .vs
-    rmdir /S /Q bin
+	rmdir /S /Q bin
+    rmdir /S /Q Xj\bin
     rmdir /S /Q bin-int
+	rmdir /S /Q Xj\obj
     del /F /S /A:H *.suo
     del /F /S *.sdf
     del /F /S *.suo
@@ -38,5 +40,6 @@ for /d %%D in (*) do (
 
     rmdir /S /Q %%~D\bin
     rmdir /S /Q %%~D\bin-int
+	rmdir /S /Q %%~D\obj
 )
 REM pause

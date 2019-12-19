@@ -1,23 +1,5 @@
-// Frank (17) GitHub
-// Frank (18) GitHub pull request
-// Frank (19) Input Polling
-// Frank (20) Key and Mouse Code
-// Frank (21) add glm /premake does not generate .lib
-// Frank (22) git change submodule
-				/*
-					go to the subfolder
-					//git status
-					git checkout docking
-					cd ..
-					//git status
-					git add imgui
-					git commit
-				*/
-
-// Frank (23)(24) Intro to Renderer
-// Frank (25)(26) change to static lib ZERO worning
 // Frank (27) Renderer Context
-
+// Frank (28) Triangle
 
 
 

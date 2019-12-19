@@ -4,7 +4,7 @@
 #include "Platform/OpenGL/OpenGLContext.h"
 
 #include "GLFW/glfw3.h"
-class GLFWwindow;
+struct GLFWwindow;
 namespace Xj {
 
 	class WindowsWindow : public Window
@@ -21,8 +21,6 @@ namespace Xj {
 		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
-
-		// Frank (19)
 		inline virtual void* GetNativeWindow() const {	return m_Window; }
 
 	private:
@@ -31,8 +29,6 @@ namespace Xj {
 
 	private:
 		GLFWwindow* m_Window;
-
-		// Frank (27)
 		GraphicContext* m_Context;
 
 		struct WindowData {

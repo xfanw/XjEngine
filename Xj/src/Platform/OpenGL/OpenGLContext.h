@@ -1,8 +1,7 @@
 #pragma once
 #include "Renderer/GraphicContext.h"
 
-// Frank (27)
-class GLFWwindow;
+struct GLFWwindow;
 
 namespace Xj {
 	class OpenGLContext : public GraphicContext {

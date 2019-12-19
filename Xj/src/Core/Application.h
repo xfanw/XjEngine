@@ -2,14 +2,17 @@
 
 
 #include "Core/Core.h"
-#include "Events/ApplicationEvent.h"
 #include "Core/Log.h"
-#include "Window.h"
-#include "Layer/LayerStack.h"
 #include "Core/Input.h"
 
-// Frank (22)
+#include "Events/ApplicationEvent.h"
+#include "Window.h"
+#include "Layer/LayerStack.h"
 #include "ImGui/ImGuiLayer.h"
+
+
+
+
 namespace Xj {
 	class  XJ_API  Application
 	{
@@ -34,11 +37,12 @@ namespace Xj {
 		static Application* s_Instance;
 
 		std::unique_ptr<Window> m_Window;
-		//Frank (22)
 		ImGuiLayer* m_ImGuiLayer;
 
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
 	};
 
 	// To be defined in CLIENT
