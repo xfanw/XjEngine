@@ -1,7 +1,7 @@
 # directories
 .vs/
-bin/
-bin-int/
+Xj/bin/
+Xj/obj
 
 #files
 *.user

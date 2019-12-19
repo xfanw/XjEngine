@@ -1,10 +1,10 @@
 #pragma once
 
 #include <Core/Window.h>
+#include "Platform/OpenGL/OpenGLContext.h"
 
-#include "glad/glad.h"
-#include <GLFW/glfw3.h>
-
+#include "GLFW/glfw3.h"
+class GLFWwindow;
 namespace Xj {
 
 	class WindowsWindow : public Window
@@ -31,6 +31,10 @@ namespace Xj {
 
 	private:
 		GLFWwindow* m_Window;
+
+		// Frank (27)
+		GraphicContext* m_Context;
+
 		struct WindowData {
 			std::string Title;
 			unsigned int Width, Height;

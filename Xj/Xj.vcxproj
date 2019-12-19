@@ -54,20 +54,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>..\bin\Debug-windows-x86_64\Xj\</OutDir>
-    <IntDir>..\bin-int\Debug-windows-x86_64\Xj\</IntDir>
+    <OutDir>bin\Debug\</OutDir>
+    <IntDir>obj\Debug\</IntDir>
     <TargetName>Xj</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\bin\Release-windows-x86_64\Xj\</OutDir>
-    <IntDir>..\bin-int\Release-windows-x86_64\Xj\</IntDir>
+    <OutDir>bin\Release\</OutDir>
+    <IntDir>obj\Release\</IntDir>
     <TargetName>Xj</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
-    <OutDir>..\bin\Dist-windows-x86_64\Xj\</OutDir>
-    <IntDir>..\bin-int\Dist-windows-x86_64\Xj\</IntDir>
+    <OutDir>bin\Dist\</OutDir>
+    <IntDir>obj\Dist\</IntDir>
     <TargetName>Xj</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
@@ -82,7 +82,6 @@
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -106,7 +105,6 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -131,7 +129,6 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -158,8 +155,10 @@
     <ClInclude Include="src\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Layer\Layer.h" />
     <ClInclude Include="src\Layer\LayerStack.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Renderer\GraphicContext.h" />
     <ClInclude Include="src\Xj.h" />
     <ClInclude Include="src\xjpch.h" />
     <ClInclude Include="vender\glm\glm\common.hpp" />
@@ -538,6 +537,7 @@
     <ClCompile Include="src\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Layer\Layer.cpp" />
     <ClCompile Include="src\Layer\LayerStack.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\xjpch.cpp">

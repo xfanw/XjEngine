@@ -16,7 +16,7 @@
 
 // Frank (23)(24) Intro to Renderer
 // Frank (25)(26) change to static lib ZERO worning
-
+// Frank (27) Renderer Context
 
 
 
@@ -64,11 +64,11 @@ public:
 				XJ_INFO("Tab Key is pressed (event)");
 		}
 	}
-	//virtual void OnImGuiRender() override {
-	//	ImGui::Begin("Test");
-	//	ImGui::Text("Hello World");
-	//	ImGui::End();
-	//}
+	virtual void OnImGuiRender() override {
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
+	}
 
 };
 

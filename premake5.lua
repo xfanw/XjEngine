@@ -1,6 +1,8 @@
 workspace "Xj"
 	architecture "x64"
 	
+	
+	
 	configurations{
 		"Debug",
 		"Release",
@@ -28,9 +30,10 @@ project "Xj"
 		language "C++"
 		cppdialect "C++17"
 		staticruntime "on"
+		warnings "Extra"
 		
-		targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-		objdir("bin-int/" .. outputdir .. "/%{prj.name}")
+		-- targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+		-- objdir("bin-int/" .. outputdir .. "/%{prj.name}")
 
 		pchheader "xjpch.h"
 		pchsource "Xj/src/xjpch.cpp"
@@ -102,6 +105,8 @@ project "Game"
 	language "C++"
 	cppdialect "C++17"
 	staticruntime "on"
+	
+	warnings "Extra"
 	
 	targetdir ("bin/" ..outputdir .. "/%{prj.name}")
 	objdir("bin-int/" ..outputdir .. "/%{prj.name}")
