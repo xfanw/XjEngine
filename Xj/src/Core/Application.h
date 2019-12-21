@@ -12,6 +12,8 @@
 
 // Frank (29)
 #include "Renderer/Shader.h"
+// Frank (30)
+#include "Renderer/Buffer.h"
 
 
 namespace Xj {
@@ -44,9 +46,14 @@ namespace Xj {
 		LayerStack m_LayerStack;
 
 		// Frank (28)
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		// Frank (30)--
+		unsigned int m_VertexArray/*, m_VertexBuffer*//*, m_IndexBuffer*/;
 		// Frank (29)
 		std::unique_ptr<Shader> m_Shader;
+		// Frank (30)
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+
 	};
 
 	// To be defined in CLIENT
