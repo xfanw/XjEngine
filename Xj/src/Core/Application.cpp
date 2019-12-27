@@ -9,22 +9,6 @@ namespace Xj {
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 	Application* Application::s_Instance = nullptr;
 
-	static GLenum ShaderDataToOpenGL(ShaderDataType type) {
-		switch (type) {
-		case ShaderDataType::Float: return GL_FLOAT;
-		case ShaderDataType::Float2: return GL_FLOAT;
-		case ShaderDataType::Float3: return GL_FLOAT;
-		case ShaderDataType::Float4: return GL_FLOAT;
-		case ShaderDataType::Mat3: return GL_FLOAT;
-		case ShaderDataType::Mat4: return GL_FLOAT;
-		case ShaderDataType::Int: return GL_INT;
-		case ShaderDataType::Int2: return GL_INT;
-		case ShaderDataType::Int3: return GL_INT;
-		case ShaderDataType::Int4: return GL_INT;
-		case ShaderDataType::Bool: return GL_BOOL;
-		}
-		return 0;
-	}
 	Application::Application()
 	{
 
@@ -38,16 +22,19 @@ namespace Xj {
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 
-		// Frank (28)
+		// Frank (28) (32--)
 
 		// Vertex Array
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
+		//glGenVertexArrays(1, &m_VertexArray);
+		//glBindVertexArray(m_VertexArray);
 
 		// Frank (30) --
 		//// Vertex Buffer
 		//glGenBuffers(1, &m_VertexBuffer);
 		//glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);	
+
+		// Frank (31)
+		m_VertexArray.reset(VertexArray::Create());
 
 		// load data
 		float vertices[3 * 7] = {
@@ -72,17 +59,21 @@ namespace Xj {
 			//,{ShaderDataType::Float2,"a_TexCoord" }
 			//,{ShaderDataType::Float3,"a_Normal" }
 		};
-		//m_VertexBuffer->SetLayout();
-		uint32_t index = 0;
-		for (const auto& element : layout) {
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index, element.GetElementCout(),
-				ShaderDataToOpenGL(element.Type),
-				element.Normalized ? GL_TRUE : GL_FALSE,
-				layout.GetStride(),
-				(const void*)element.Offset);
-			index++;
-		}
+		m_VertexBuffer->SetLayout(layout);
+
+
+		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
+		// Frank (31)++ (32)--
+		//uint32_t index = 0;
+		//for (const auto& element : layout) {
+		//	glEnableVertexAttribArray(index);
+		//	glVertexAttribPointer(index, element.GetElementCout(),
+		//		ShaderDataToOpenGL(element.Type),
+		//		element.Normalized ? GL_TRUE : GL_FALSE,
+		//		layout.GetStride(),
+		//		(const void*)element.Offset);
+		//	index++;
+		//}
 
 
 
@@ -96,10 +87,32 @@ namespace Xj {
 		//m_IndexBuffer->Bind();
 
 		//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
+
+		// Frank (32) Square
+		m_SquareVertexArray.reset(VertexArray::Create());
+		float squareVertices[3 * 4] = {
+			-0.5f, -0.5f, 0.0f,/* 0.8f, 0.2f, 0.8f, 0.8f, */
+			 0.5f, -0.5f, 0.0f,/* 0.8f, 0.8f, 0.2f, 0.8f, */
+			 0.5f,  0.5f, 0.0f,/* 0.2f, 0.8f, 0.8f, 0.8f  */
+			-0.5f,  0.5f, 0.0f
+		};
+		m_SquareVertexBuffer.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		BufferLayout squareLayout = {
+			{ShaderDataType::Float3, "a_position" }
+		};
+		m_SquareVertexBuffer->SetLayout(squareLayout);
+
+		m_SquareVertexArray->AddVertexBuffer(m_SquareVertexBuffer);
+
+		uint32_t squareIndices[6] = { 0,1,2,2,3,0};
+		m_SquareIndexBuffer.reset(IndexBuffer::Create(squareIndices, 6));
+		m_SquareVertexArray->SetIndexBuffer(m_SquareIndexBuffer);
+
+
+
 
 		// Shader
-
-
 		std::string vertexScr = R"(
 			#version 330 core
 
@@ -130,7 +143,34 @@ namespace Xj {
 
 		)";
 
+
+		std::string vertexScr2 = R"(
+			#version 330 core
+
+			layout(location = 0) in vec3 a_Position;
+			out vec3 v_Position;
+
+			void main(){
+				v_Position=a_Position * 0.5 + 0.5;
+				gl_Position = vec4(a_Position*1.5 , 1.0);
+
+			}
+
+		)";
+
+		std::string fragmentScr2 = R"(
+			#version 330 core
+
+			layout(location = 0) out vec4 color;
+			in vec3 v_Position;
+
+			void main(){
+				color = vec4(v_Position, 1.0);
+			}
+
+		)";
 		m_Shader.reset(new Shader(vertexScr, fragmentScr));
+		m_Shader2.reset(new Shader(vertexScr2, fragmentScr2));
 
 	}
 
@@ -175,9 +215,19 @@ namespace Xj {
 			glClearColor(0.1f, 0.1f, 0.1f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
+			m_Shader2->Bind();
+			m_SquareVertexArray->Bind();
+			glDrawElements(GL_TRIANGLES, m_SquareVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+
+
+
+
+
 			m_Shader->Bind();
-			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+			// Frank (32) --
+			// glBindVertexArray(m_VertexArray);
+			m_VertexArray->Bind();
+			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();

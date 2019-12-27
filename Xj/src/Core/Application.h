@@ -14,7 +14,8 @@
 #include "Renderer/Shader.h"
 // Frank (30)
 #include "Renderer/Buffer.h"
-
+// Frank (32)
+#include "Renderer/VertexArray.h"
 
 namespace Xj {
 	class  XJ_API  Application
@@ -47,12 +48,19 @@ namespace Xj {
 
 		// Frank (28)
 		// Frank (30)--
-		unsigned int m_VertexArray/*, m_VertexBuffer*//*, m_IndexBuffer*/;
+		//unsigned int m_VertexArray/*, m_VertexBuffer*//*, m_IndexBuffer*/;
 		// Frank (29)
-		std::unique_ptr<Shader> m_Shader;
+		std::shared_ptr<Shader> m_Shader;
 		// Frank (30)
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::shared_ptr<VertexArray> m_VertexArray;
+		std::shared_ptr<VertexBuffer> m_VertexBuffer;
+		std::shared_ptr<IndexBuffer> m_IndexBuffer;
+
+		// Frank (32)
+		std::shared_ptr<Shader> m_Shader2;
+		std::shared_ptr<VertexArray> m_SquareVertexArray;
+		std::shared_ptr<VertexBuffer> m_SquareVertexBuffer;
+		std::shared_ptr<IndexBuffer> m_SquareIndexBuffer;
 
 	};
 

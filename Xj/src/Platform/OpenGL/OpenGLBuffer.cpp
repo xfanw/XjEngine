@@ -34,6 +34,11 @@ namespace Xj {
 		return m_Layout;
 	}
 
+	const BufferLayout& OpenGLVertexBuffer::GetLayout() const
+	{
+		return m_Layout;
+	}
+
 	// class Index Buffer
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count)
 		:m_Count(count)
