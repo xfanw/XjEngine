@@ -2,8 +2,12 @@
 #include "Application.h"
 
 
-#include "glad/glad.h"
-#include "GLFW/glfw3.h"
+//#include "glad/glad.h"
+//#include "GLFW/glfw3.h"
+
+#include "Renderer/Renderer.h"
+
+// Frank (33)
 namespace Xj {
 
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
@@ -22,18 +26,7 @@ namespace Xj {
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 
-		// Frank (28) (32--)
 
-		// Vertex Array
-		//glGenVertexArrays(1, &m_VertexArray);
-		//glBindVertexArray(m_VertexArray);
-
-		// Frank (30) --
-		//// Vertex Buffer
-		//glGenBuffers(1, &m_VertexBuffer);
-		//glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);	
-
-		// Frank (31)
 		m_VertexArray.reset(VertexArray::Create());
 
 		// load data
@@ -42,59 +35,29 @@ namespace Xj {
 			 0.5f, -0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 0.8f,
 			 0.0f,  0.5f, 0.0f, 0.2f, 0.8f, 0.8f, 0.8f
 		};
-		// glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-
-		// Frank (30) ++
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-		//m_VertexBuffer->Bind();
 
-		// Frank (31) --
-		//glEnableVertexAttribArray(0);
-		//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-		// Frank (31)
 		BufferLayout layout = {
 			{ShaderDataType::Float3, "a_position" }
 			,{ShaderDataType::Float4,"a_Color" }
-			//,{ShaderDataType::Float2,"a_TexCoord" }
-			//,{ShaderDataType::Float3,"a_Normal" }
+
 		};
 		m_VertexBuffer->SetLayout(layout);
 
-
 		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
-		// Frank (31)++ (32)--
-		//uint32_t index = 0;
-		//for (const auto& element : layout) {
-		//	glEnableVertexAttribArray(index);
-		//	glVertexAttribPointer(index, element.GetElementCout(),
-		//		ShaderDataToOpenGL(element.Type),
-		//		element.Normalized ? GL_TRUE : GL_FALSE,
-		//		layout.GetStride(),
-		//		(const void*)element.Offset);
-		//	index++;
-		//}
 
-
-
-		// Frank (30) --
-		//// Index Buffer
-		//glGenBuffers(1, &m_IndexBuffer);
-		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
 		uint32_t indices[3] = { 0,1,2 };
-		// Frank (30) ++
 		m_IndexBuffer.reset(IndexBuffer::Create(indices, 3));
-		//m_IndexBuffer->Bind();
 
-		//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
 
 		// Frank (32) Square
 		m_SquareVertexArray.reset(VertexArray::Create());
 		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,/* 0.8f, 0.2f, 0.8f, 0.8f, */
-			 0.5f, -0.5f, 0.0f,/* 0.8f, 0.8f, 0.2f, 0.8f, */
-			 0.5f,  0.5f, 0.0f,/* 0.2f, 0.8f, 0.8f, 0.8f  */
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
 			-0.5f,  0.5f, 0.0f
 		};
 		m_SquareVertexBuffer.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
@@ -212,37 +175,45 @@ namespace Xj {
 	void Application::Run() {
 
 		while (m_Running) {
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			// Frank (33)--
+			//glClearColor(0.1f, 0.1f, 0.1f, 1);
+			//glClear(GL_COLOR_BUFFER_BIT);
+
+			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+			RenderCommand::Clear();
+
+
+			Renderer::BeginScene();
 
 			m_Shader2->Bind();
-			m_SquareVertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_SquareVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-
-
-
-
+			Renderer::Submit(m_SquareVertexArray);
 
 			m_Shader->Bind();
-			// Frank (32) --
-			// glBindVertexArray(m_VertexArray);
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_VertexArray);
+
+			Renderer::EndScene();
+
+			// Frank (33) --
+			////Renderer::Flush();
+
+			////m_Shader2->Bind();
+			////m_SquareVertexArray->Bind();
+			//glDrawElements(GL_TRIANGLES, m_SquareVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+
+			////m_Shader->Bind();
+			////m_VertexArray->Bind();
+			//glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
-				m_ImGuiLayer->Begin();
-				for (Layer* layer_2 : m_LayerStack)
-					layer_2->OnImGuiRender();
-				m_ImGuiLayer->End();
-
-
-
 			}
+			m_ImGuiLayer->Begin();
+			for (Layer* layer_2 : m_LayerStack)
+				layer_2->OnImGuiRender();
+			m_ImGuiLayer->End();
+			
 
 			m_Window->OnUpdate();
-
 		}
 	}
-
 }

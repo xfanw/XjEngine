@@ -6,10 +6,10 @@ namespace Xj {
 	VertexArray* VertexArray::Create()
 	{
 		switch (Renderer::GetAPI()) {
-		case RendererAPI::NONE:
+		case RendererAPI::API::NONE:
 			XJ_CORE_ASSERT(false, "RendererAPI::NONE is currently not supported!");
 			return nullptr;
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 			return new OpenGLVertexArray();
 		}
 

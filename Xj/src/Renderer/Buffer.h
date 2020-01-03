@@ -1,9 +1,9 @@
 #pragma once
 
-// Frank (30)
+
 namespace Xj {
 
-	// Frank (31)
+
 	enum class ShaderDataType {
 		None = 0,
 		Float, Float2, Float3, Float4,
@@ -12,7 +12,7 @@ namespace Xj {
 		Bool
 	};
 
-	// Frank (31)
+
 	static uint32_t ShaderDataTypeSize(ShaderDataType type) {
 		switch (type) 
 		{
@@ -32,7 +32,7 @@ namespace Xj {
 		return 0;
 	}
 
-	// Frank (31)
+
 	struct BufferElement {
 		std::string Name;
 		ShaderDataType Type;
@@ -62,11 +62,10 @@ namespace Xj {
 
 	};
 
-	// Frank (31)
+
 	class BufferLayout {
 	public:
 		BufferLayout() {}
-		// BufferLayout(std::vector<BufferElement> element) {} wont call next constructor
 		BufferLayout(const std::initializer_list<BufferElement>& elements)
 			: m_Elements(elements){
 			CalculateOffsetAndStride();

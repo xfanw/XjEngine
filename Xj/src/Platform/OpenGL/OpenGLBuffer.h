@@ -1,7 +1,7 @@
 #pragma once
 #include "Renderer/Buffer.h"
 
-// Frank (30)
+
 namespace Xj {
 
 	class OpenGLVertexBuffer : public VertexBuffer {
@@ -11,7 +11,7 @@ namespace Xj {
 		// Inherited via VertexBuffer
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
-		// Frank (31)
+
 		virtual void SetLayout(const BufferLayout& layout) override;
 		virtual const BufferLayout& GetLayout() override;
 		virtual const BufferLayout& GetLayout() const ;

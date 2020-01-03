@@ -1,18 +1,25 @@
 #pragma once
 
+#include "Renderer/RendererAPI.h"
+#include "Renderer/RenderCommand.h"
 namespace Xj {
-
-	enum class RendererAPI {
-		NONE = 0,
-		OpenGL = 1
-	};
+// Frank (33)--
+	//enum class RendererAPI {
+	//	NONE = 0,
+	//	OpenGL = 1
+	//};
 
 	class Renderer
 	{
 	public:
-		inline static RendererAPI GetAPI() { return s_RendererAPI; }
-	private:
-		static RendererAPI s_RendererAPI;
+		static void BeginScene();
+		static void EndScene();
+		
+		static void Submit(const std::shared_ptr<VertexArray>& vertexeArray);
+		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
+// Frank (33)--
+	//private:
+	//	static RendererAPI::API s_RendererAPI;
 	};
 
 }

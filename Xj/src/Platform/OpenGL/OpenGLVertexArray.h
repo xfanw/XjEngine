@@ -1,9 +1,8 @@
 #pragma once
 
-// Frank (32) 
 #include "Renderer/VertexArray.h"
 #include <vector>
-#include "glad/glad.h"
+#include <glad/glad.h>
 namespace Xj {
 	class OpenGLVertexArray: public VertexArray
 	{

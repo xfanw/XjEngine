@@ -1,6 +1,5 @@
 #include "xjpch.h"
 
-// Frank (30)
 #include "OpenGLBuffer.h"
 #include <glad/glad.h>
 namespace Xj {
